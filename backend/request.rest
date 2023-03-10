@@ -1,0 +1,16 @@
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/users/203687bf-9292-4dd9-b603-8f07e06293c6
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name" : "John Doe",
+    "email" : "johndoe@gmail.com",
+    "password" : "123456",
+    "confPassword" : "123456",
+    "role" : "user"
+}
