@@ -14,3 +14,75 @@ Content-Type: application/json
     "confPassword" : "123456",
     "role" : "user"
 }
+
+###
+PATCH http://localhost:5000/users/203687bf-9292-4dd9-b603-8f07e06293c6
+Content-Type: application/json
+
+{
+    "name" : "John Doe Updated",
+    "email" : "johndoe@gmail.com",
+    "password" : "123456",
+    "confPassword" : "123456",
+    "role" : "user"
+}
+
+###
+DELETE http://localhost:5000/users/203687bf-9292-4dd9-b603-8f07e06293c6
+
+
+
+//login user
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "fadlifirdass@gmail.com",
+    "password" : "123456"
+}
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "johndoe@gmail.com",
+    "password" : "123456"
+}
+
+###
+GET http://localhost:5000/userlogin
+
+###
+DELETE http://localhost:5000/logout
+
+
+###
+//get All Products
+GET http://localhost:5000/products
+###
+//get Product By Id
+GET http://localhost:5000/products/9879b3b2-5173-4b46-8694-6a2fdd80b1dc
+
+###
+//create product
+POST http://localhost:5000/products
+Content-Type: application/json
+
+{
+    "name" : "Request Reimbursment",
+    "price" : "Kuota Internet"
+}
+
+###
+//update product
+PATCH  http://localhost:5000/products/9879b3b2-5173-4b46-8694-6a2fdd80b1dc
+Content-Type: application/json
+
+{
+    "name" : "Product 9 Updated",
+    "price" : 2000111
+}
+###
+//delete product
+DELETE http://localhost:5000/products/9879b3b2-5173-4b46-8694-6a2fdd80b1dc

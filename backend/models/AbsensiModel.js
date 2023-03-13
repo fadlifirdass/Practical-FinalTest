@@ -1,11 +1,11 @@
 const {Sequelize} = require("sequelize")
 const db = require('../config/database')
-const Users = require('../models/UserModel')
+const Users = require('./UserModel')
 
 
 const {DataTypes} = Sequelize;
 
-const Product = db.define('product',{
+const Absensi = db.define('absensi',{
     uuid:{
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
@@ -14,16 +14,15 @@ const Product = db.define('product',{
             notEmpty:true
         }
     },
-    name:{
+    jam_masuk:{
         type: DataTypes.STRING,
         allowNull: false,
         validate : {
-            notEmpty:true,
-            len : [3, 100]
+            notEmpty:true
         }
     },
-    price:{
-        type: DataTypes.INTEGER,
+    jam_keluar:{
+        type: DataTypes.STRING,
         allowNull: false,
         validate : {
             notEmpty:true
@@ -40,8 +39,11 @@ const Product = db.define('product',{
     freezeTableName : true
 })
 
-Users.hasMany(Product)
-Product.belongsTo(Users, {foreignKey: 'userId'})
+Users.hasMany(Absensi)
+Absensi.belongsTo(Users, {foreignKey: 'userId'})
 
+module.exports = Absensi;
 
-module.exports = Product;
+// (async()=>{
+//     db.sync()
+// })()
