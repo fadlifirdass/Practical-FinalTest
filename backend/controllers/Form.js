@@ -7,7 +7,7 @@ const getProduct = async(req,res) => {
         let response
         if(req.role === "admin"){
             response = await Product.findAll({
-                attributes:['uuid','name','price'],
+                attributes:['uuid','name','price','status'],
                 include:[{
                     model : User,
                     attributes:['name','email']
@@ -15,7 +15,7 @@ const getProduct = async(req,res) => {
             })
         }else {
             response = await Product.findAll({
-                attributes:['uuid','name','price'],
+                attributes:['uuid','name','price','status'],
                 where:{
                     userId: req.userId
                 },
@@ -42,7 +42,7 @@ const getProductById = async (req,res) => {
         let response
         if(req.role === "admin"){
             response = await Product.findOne({
-                attributes:['uuid','name','price'],
+                attributes:['uuid','name','price','status'],
                 where:{
                     id: product.id
                 },
@@ -53,7 +53,7 @@ const getProductById = async (req,res) => {
             })
         }else {
             response = await Product.findOne({
-                attributes:['uuid','name','price'],
+                attributes:['uuid','name','price','status'],
                 where:{
                     [Op.and]:[{id: product.id},{userId: req.userId}]
                 },
@@ -72,11 +72,12 @@ const getProductById = async (req,res) => {
 
 
 const createProduct = async (req,res) => {
-    const {name, price} = req.body
+    const {name, price, status} = req.body
     try {
         await Product.create({
             name: name,
             price: price,
+            status: status,
             userId: req.userId
         })
         res.status(201).json({msg:"Product Created Successfully"})
@@ -93,16 +94,16 @@ const updateProduct = async (req,res) => {
             }
         })
         if(!product) return res.status(404).json({msg: "Data tidak ditemukan!"})
-        const {name, price} = req.body
+        const {name, price, status} = req.body
         if(req.role === "admin"){
-            await Product.update({name, price},{
+            await Product.update({name, price, status},{
                 where :{
                     id: product.id
                 }
             })
         }else {
             if(req.userId !== product.userId) return res.status(403).json({msg: "Akses terlarang"})
-            await Product.update({name, price},{
+            await Product.update({name, price, status},{
                 where:{
                     [Op.and]:[{id: product.id},{userId: req.userId}]
                 }
@@ -122,7 +123,7 @@ const deleteProduct = async(req,res) => {
             }
         })
         if(!product) return res.status(404).json({msg: "Data tidak ditemukan!"})
-        const {name, price} = req.body
+        const {name, price, status} = req.body
         if(req.role === "admin"){
             await Product.destroy({
                 where :{

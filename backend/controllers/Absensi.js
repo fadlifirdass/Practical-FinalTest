@@ -28,4 +28,19 @@ const getAbsensi = async(req,res) => {
     }
 }
 
-module.exports = getAbsensi;
+
+const createAbsensi = async (req,res) => {
+    const {jam_masuk, jam_keluar} = req.body
+    try {
+        await Absensi.create({
+            jam_masuk: jam_masuk,
+            jam_keluar: jam_keluar,
+            userId: req.userId
+        })
+        res.status(201).json({msg: `anda telah masuk pada jam ${jam_masuk}`})
+    } catch (error) {
+        res.status(500).json({msg: error.message})
+    }
+}
+
+module.exports = {getAbsensi, createAbsensi};

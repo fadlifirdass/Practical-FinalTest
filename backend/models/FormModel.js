@@ -18,11 +18,17 @@ const Product = db.define('product',{
         type: DataTypes.STRING,
         allowNull: false,
         validate : {
-            notEmpty:true,
-            len : [3, 100]
+            notEmpty:true
         }
     },
     price:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate : {
+            notEmpty:true
+        }
+    },
+    status:{
         type: DataTypes.STRING,
         allowNull: false,
         validate : {
@@ -45,3 +51,8 @@ Product.belongsTo(Users, {foreignKey: 'userId'})
 
 
 module.exports = Product;
+
+(async()=>{
+    db.sync()
+})()
+

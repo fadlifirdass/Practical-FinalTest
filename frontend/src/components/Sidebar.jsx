@@ -23,6 +23,7 @@ const Logout = ()=>{
   </p>
   <ul className="menu-list">
     <li><NavLink to={"/dashboard"}><IoHome/> Dashboard</NavLink></li>
+    <li><NavLink to={"/absensi"}><IoHome/> Absensi</NavLink></li>
     <li><NavLink to={"/products"}><IoPricetag/> Pengajuan</NavLink></li>
   </ul>
 
@@ -35,7 +36,7 @@ const Logout = ()=>{
     <li><NavLink to={"/users"}><IoPerson/> Form Manage</NavLink></li>
   </ul>
   <ul className="menu-list">
-    <li><NavLink to={"/users/add"}><IoPerson/> Announcement</NavLink></li>
+    <li><NavLink to={"/users/karyawan"}><IoPerson/> List Pengguna</NavLink></li>
   </ul>
     </div>
 )}

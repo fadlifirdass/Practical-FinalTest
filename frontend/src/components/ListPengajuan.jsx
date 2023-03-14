@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const ListPengajuan = () => {
@@ -21,8 +22,9 @@ const ListPengajuan = () => {
             <tr>
                 <th>No</th>
                 <th>Jenis Pengajuan</th>
-                <th>Alasan Pengajuan</th>
+                <th>Deskripsi Pengajuan</th>
                 <th>Nama Karyawan</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -33,7 +35,9 @@ const ListPengajuan = () => {
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.user.name}</td>
+                <td>{product.status}</td>
                 <td>
+                    <Link to={`/products/edit/${product.uuid}`} className='button is-halfwidth'>Approve</Link>
                 </td>
             </tr>
             ))} 
