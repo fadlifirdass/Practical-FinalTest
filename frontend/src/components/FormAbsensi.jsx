@@ -22,8 +22,8 @@ const FormAbsensi = () => {
 
   return (
     <div>
-        <h1>Jam Masuk : {signIn}</h1>
-        <h1>Jam Keluar : {signOut}</h1>
+        <h1>Jam Masuk : <button>Sign in</button></h1>
+        <h1>Jam Keluar : <button>Sign out</button></h1>
     </div>
   )
 }

@@ -28,6 +28,44 @@ const getAbsensi = async(req,res) => {
     }
 }
 
+const getAbsensiById = async (req,res) => {
+    try {
+        const absensi = await Absensi.findOne({
+            where:{
+                uuid: req.params.id
+            }
+        })
+        if(!absensi) return res.status(404).json({msg: "Data absen tidak ditemukan!"})
+        let response
+        if(req.role === "admin"){
+            response = await Absensi.findOne({
+                attributes:['uuid','jam_masuk','jam_keluar'],
+                where:{
+                    id: absensi.id
+                },
+                include:[{
+                    model : User,
+                    attributes:['name','email']
+                }]
+            })
+        }else {
+            response = await Absensi.findOne({
+                attributes:['uuid','jam_masuk','jam_keluar'],
+                where:{
+                    [Op.and]:[{id: absensi.id},{userId: req.userId}]
+                },
+                include:[{
+                    model : User,
+                    attributes:['name','email']
+                }]
+            })
+        }
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(500).json({msg: error.message})
+    }
+}
+
 
 const createAbsensi = async (req,res) => {
     const {jam_masuk, jam_keluar} = req.body
@@ -43,4 +81,4 @@ const createAbsensi = async (req,res) => {
     }
 }
 
-module.exports = {getAbsensi, createAbsensi};
+module.exports = {getAbsensi, createAbsensi, getAbsensiById};
