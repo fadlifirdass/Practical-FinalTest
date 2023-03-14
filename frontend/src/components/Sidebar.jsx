@@ -38,6 +38,10 @@ const Logout = ()=>{
   <ul className="menu-list">
     <li><NavLink to={"/users/karyawan"}><IoPerson/> List Pengguna</NavLink></li>
   </ul>
+
+  <ul className="menu-list">
+    <li><NavLink to={"/users/karyawan"}><IoPerson/> Announcement</NavLink></li>
+  </ul>
     </div>
 )}
 

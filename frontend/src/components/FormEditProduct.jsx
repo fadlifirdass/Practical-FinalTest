@@ -54,7 +54,7 @@ const FormEditProduct = () => {
                      <div className="field">
                             <label className="label">Jenis Pengajuan</label>
                             <div className="control">
-                                <input type="text" className="input" placeholder='Product Name' 
+                                <input type="text" className="input" placeholder='Pengajuan' 
                                  value={name} onChange={(e)=> setName(e.target.value)}
                                 />
                             </div>
@@ -62,7 +62,7 @@ const FormEditProduct = () => {
                         <div className="field">
                             <label className="label">Deskripsi Pengajuan</label>
                             <div className="control">
-                                <input type="text" className="input" placeholder='Price' 
+                                <input type="text" className="input" placeholder='Deskripsi' 
                                  value={price} onChange={(e)=> setPrice(e.target.value)}
                                 />
                             </div>
