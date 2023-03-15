@@ -9,6 +9,7 @@ import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
 import Absensi from "./pages/Absensi";
 import Karyawan from "./pages/Karyawan";
+import Pengumuman from "./pages/Pengumuman";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/users" element={<Users/>}/>
         <Route path="/users/karyawan" element={<Karyawan/>}/>
+        <Route path="/users/pengumuman" element={<Pengumuman/>}/>
         <Route path="/users/add" element={<AddUser/>}/>
         <Route path="/users/edit/:id" element={<EditUser/>}/>
         <Route path="/products" element={<Products/>}/>

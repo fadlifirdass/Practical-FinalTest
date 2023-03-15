@@ -1,18 +1,17 @@
-import React,{useState} from 'react';
+import React,{ useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const FormAddUser = () => {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confPassword, setConfPassword] = useState("")
+    const [role, setRole] = useState("")
+    const [msg, setMessage] = useState("")
+    const navigate = useNavigate()
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confPassword, setConfPassword] = useState("");
-    const [role, setRole] = useState("");
-    const [msg, setMessage] = useState("");
-    const navigate = useNavigate();
-
-    const saveUser = async (e) => {
+    const addUser = async (e) => {
         e.preventDefault();
         try {
             await axios.post("http://localhost:5000/users",{
@@ -38,13 +37,14 @@ const FormAddUser = () => {
     <div className="card is-shadowless">
         <div className="card-content">
             <div className="content">
-                     <form onSubmit={saveUser}>
+                     <form onSubmit={addUser}>
                         <p className='has-text-centered'>{msg}</p>
                      <div className="field">
                             <label className="label">Name</label>
                             <div className="control">
-                                <input type="text" className="input" placeholder='Name' 
-                                value={name} onChange={(e)=> setName(e.target.event)}
+                                <input type="text" className="input"  
+                                value={name} onChange={(e)=> setName(e.target.value)}
+                                placeholder="Name"
                                 />
                             </div>
                         </div>
@@ -52,7 +52,7 @@ const FormAddUser = () => {
                             <label className="label">Email</label>
                             <div className="control">
                                 <input type="text" className="input" placeholder='Email'
-                                value={email} onChange={(e)=> setEmail(e.target.event)}
+                                value={email} onChange={(e)=> setEmail(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -60,7 +60,7 @@ const FormAddUser = () => {
                             <label className="label">Password</label>
                             <div className="control">
                                 <input type="password" className="input" placeholder='Password' 
-                                value={password} onChange={(e)=> setPassword(e.target.event)}
+                                value={password} onChange={(e)=> setPassword(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -68,7 +68,7 @@ const FormAddUser = () => {
                             <label className="label">Confirm Password</label>
                             <div className="control">
                                 <input type="password" className="input" placeholder='Password' 
-                                value={confPassword} onChange={(e)=> setConfPassword(e.target.event)}
+                                value={confPassword} onChange={(e)=> setConfPassword(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -76,7 +76,7 @@ const FormAddUser = () => {
                             <label className="label">Role</label>
                             <div className="control">
                                 <div className="select is-fullwidth">
-                                    <select value={role} onChange={(e)=> setRole(e.target.event)}>
+                                    <select value={role} onChange={(e)=> setRole(e.target.value)}>
                                         <option value="admin">Admin</option>
                                         <option value="user">User</option>
                                     </select>
@@ -88,7 +88,7 @@ const FormAddUser = () => {
                             <button type="submit" className="button is-success">Save</button>
                             </div>
                         </div>
-                    </form>
+                 </form>
             </div>
         </div>
     </div>

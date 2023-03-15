@@ -69,6 +69,40 @@ const getProductById = async (req,res) => {
     }
 }
 
+const historyProduct = async (req,res) => {
+    try {
+        let response
+        if(req.role === "admin"){
+            response = await Product.findAll({
+                attributes:['uuid','name','price','status','createdAt'],
+                where:{
+                    userId: req.userId
+                },
+                include:[{
+                    model : User,
+                    attributes:['name','email']
+                }]
+            })
+        }else {
+            response = await Product.findAll({
+                attributes:['uuid','name','price','status','createdAt'],
+                where:{
+                    userId: req.userId
+                },
+                include:[{
+                    model : User,
+                    attributes:['name','email']
+                }]
+            })
+        }
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(500).json({msg: error.message})
+    }
+}
+
+
+
 
 
 const createProduct = async (req,res) => {
@@ -148,4 +182,4 @@ const deleteProduct = async(req,res) => {
 
 
 
-module.exports = {getProduct, createProduct,getProductById, updateProduct, deleteProduct}
+module.exports = {getProduct, createProduct,getProductById, updateProduct, deleteProduct, historyProduct}

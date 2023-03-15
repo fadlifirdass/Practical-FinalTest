@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
-import { IoPerson, IoPricetag, IoHome, IoLogOut} from "react-icons/io5"
+import { IoPerson, IoPricetag, IoHome, IoLogOut, IoNewspaperSharp ,IoAlbums, IoFingerPrint} from "react-icons/io5"
 import { useDispatch, useSelector } from 'react-redux';
 import { LogOut, reset } from "../features/authSlice"
 
@@ -23,7 +23,7 @@ const Logout = ()=>{
   </p>
   <ul className="menu-list">
     <li><NavLink to={"/dashboard"}><IoHome/> Dashboard</NavLink></li>
-    <li><NavLink to={"/absensi"}><IoHome/> Absensi</NavLink></li>
+    <li><NavLink to={"/absensi"}><IoFingerPrint/> Absensi</NavLink></li>
     <li><NavLink to={"/products"}><IoPricetag/> Pengajuan</NavLink></li>
   </ul>
 
@@ -33,14 +33,14 @@ const Logout = ()=>{
     HR
   </p>
   <ul className="menu-list">
-    <li><NavLink to={"/users"}><IoPerson/> Form Manage</NavLink></li>
+    <li><NavLink to={"/users"}><IoAlbums/> Form Manage</NavLink></li>
   </ul>
   <ul className="menu-list">
     <li><NavLink to={"/users/karyawan"}><IoPerson/> List Pengguna</NavLink></li>
   </ul>
 
   <ul className="menu-list">
-    <li><NavLink to={"/users/karyawan"}><IoPerson/> Announcement</NavLink></li>
+    <li><NavLink to={"/users/pengumuman"}><IoNewspaperSharp/> Announcement</NavLink></li>
   </ul>
     </div>
 )}
