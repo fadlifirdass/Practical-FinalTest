@@ -24,7 +24,7 @@ const Logout = ()=>{
   <ul className="menu-list">
     <li><NavLink to={"/dashboard"}><IoHome/> Dashboard</NavLink></li>
     <li><NavLink to={"/absensi"}><IoFingerPrint/> Absensi</NavLink></li>
-    <li><NavLink to={"/products"}><IoPricetag/> Pengajuan</NavLink></li>
+    <li><NavLink to={"/pengajuan"}><IoPricetag/> Pengajuan</NavLink></li>
   </ul>
 
 {user && user.role === "admin" && (

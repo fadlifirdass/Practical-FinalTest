@@ -10,5 +10,18 @@ const getPengumuman = async (req,res) => {
     }
 }
 
+const createPengumuman = async (req, res) => {
+    const {subject, description} = req.body
+    try {
+        await Pengumuman.create({
+          subject : subject,
+          description : description
+        })
+        res.status(201).json({msg: "Announcement Created !"})
+    } catch (error) {
+     res.status(400).json({msg: error.message})    
+    }
+ }
 
-module.exports = {getPengumuman}
+
+module.exports = {getPengumuman, createPengumuman}

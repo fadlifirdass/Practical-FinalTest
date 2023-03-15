@@ -37,7 +37,7 @@ const ListPengajuan = () => {
                 <td>{product.user.name}</td>
                 <td>{product.status}</td>
                 <td>
-                    <Link to={`/products/edit/${product.uuid}`} className='button is-halfwidth'>Approve</Link>
+                    <Link to={`/pengajuan/edit/${product.uuid}`} className='button is-halfwidth'>Approve</Link>
                 </td>
             </tr>
             ))} 

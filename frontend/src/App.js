@@ -10,6 +10,7 @@ import EditProduct from "./pages/EditProduct";
 import Absensi from "./pages/Absensi";
 import Karyawan from "./pages/Karyawan";
 import Pengumuman from "./pages/Pengumuman";
+import AddPengumuman from "./pages/AddPengumuman";
 
 function App() {
   return (
@@ -20,11 +21,12 @@ function App() {
         <Route path="/users" element={<Users/>}/>
         <Route path="/users/karyawan" element={<Karyawan/>}/>
         <Route path="/users/pengumuman" element={<Pengumuman/>}/>
+        <Route path="/users/pengumuman/add" element={<AddPengumuman/>}/>
         <Route path="/users/add" element={<AddUser/>}/>
         <Route path="/users/edit/:id" element={<EditUser/>}/>
-        <Route path="/products" element={<Products/>}/>
-        <Route path="/products/add" element={<AddProduct/>}/>
-        <Route path="/products/edit/:id" element={<EditProduct/>}/>
+        <Route path="/pengajuan" element={<Products/>}/>
+        <Route path="/pengajuan/add" element={<AddProduct/>}/>
+        <Route path="/pengajuan/edit/:id" element={<EditProduct/>}/>
         <Route path="/absensi" element={<Absensi/>}/>
         <Route path="/" element={<Login/>}/>
       </Routes>

@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ListPengumuman = () => {
 
@@ -17,8 +18,9 @@ const ListPengumuman = () => {
 
   return (
     <div>
-    <h1 className='title'>Request</h1>
-   <h2 className='subtitle'>List of Requests</h2>
+    <h1 className='title'>Pengumuman</h1>
+   <h2 className='subtitle'>List of Pengumuman</h2>
+   <Link to={'/users/pengumuman/add'} className="button is-primary mb-2">Tambah Pengumuman</Link>
    <table className='table is-striped is-fullwidth'>
      <thead>
          <tr>

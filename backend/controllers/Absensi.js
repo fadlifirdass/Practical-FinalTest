@@ -67,6 +67,44 @@ const getAbsensiById = async (req,res) => {
 }
 
 
+
+
+const historyAbsensi = async (req,res) => {
+    try {
+        let response
+        if(req.role === "admin"){
+            response = await Absensi.findAll({
+                attributes:['uuid','jam_masuk','jam_keluar','createdAt'],
+                where:{
+                    userId: req.userId
+                },
+                include:[{
+                    model : User,
+                    attributes:['name','email']
+                }]
+            })
+        }else {
+            response = await Absensi.findAll({
+                attributes:['uuid','jam_masuk','jam_keluar','createdAt'],
+                where:{
+                    userId: req.userId
+                },
+                include:[{
+                    model : User,
+                    attributes:['name','email']
+                }]
+            })
+        }
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(500).json({msg: error.message})
+    }
+}
+
+
+
+
+
 const createAbsensi = async (req,res) => {
     const {jam_masuk, jam_keluar} = req.body
     try {
@@ -81,4 +119,4 @@ const createAbsensi = async (req,res) => {
     }
 }
 
-module.exports = {getAbsensi, createAbsensi, getAbsensiById};
+module.exports = {getAbsensi, createAbsensi, getAbsensiById, historyAbsensi};
