@@ -11,6 +11,7 @@ import Absensi from "./pages/Absensi";
 import Karyawan from "./pages/Karyawan";
 import Pengumuman from "./pages/Pengumuman";
 import AddPengumuman from "./pages/AddPengumuman";
+import EditPengumuman from "./pages/EditPengumuman";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/users/karyawan" element={<Karyawan/>}/>
         <Route path="/users/pengumuman" element={<Pengumuman/>}/>
         <Route path="/users/pengumuman/add" element={<AddPengumuman/>}/>
+        <Route path="/users/pengumuman/edit/:id" element={<EditPengumuman/>}/>
         <Route path="/users/add" element={<AddUser/>}/>
         <Route path="/users/edit/:id" element={<EditUser/>}/>
         <Route path="/pengajuan" element={<Products/>}/>

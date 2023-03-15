@@ -26,6 +26,7 @@ const ListPengumuman = () => {
          <tr>
              <th>No</th>
              <th>Subject</th>
+             <th>Actions</th>
          </tr>
      </thead>
      <tbody>
@@ -33,6 +34,9 @@ const ListPengumuman = () => {
              <tr key={pengumuman.uuid}>
                 <td>{index + 1}</td>
                 <td>{pengumuman.subject}</td>
+                <td>
+                <Link to={`/users/pengumuman/edit/${pengumuman.uuid}`} className='button is-small'>Edit</Link>
+                </td>
             </tr>
             ))} 
      </tbody>

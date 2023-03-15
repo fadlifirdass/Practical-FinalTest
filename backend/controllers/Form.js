@@ -1,5 +1,6 @@
 const Product = require('../models/FormModel')
 const User = require('../models/UserModel')
+const sendMail = require('../smtp/smtp')
 const {Op} = require('sequelize')
 
 const getProduct = async(req,res) => {
@@ -115,6 +116,7 @@ const createProduct = async (req,res) => {
             userId: req.userId
         })
         res.status(201).json({msg:"Product Created Successfully"})
+        sendMail();
     } catch (error) {
         res.status(500).json({msg: error.message})
     }

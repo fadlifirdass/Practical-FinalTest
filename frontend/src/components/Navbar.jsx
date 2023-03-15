@@ -18,7 +18,7 @@ const Logout = () =>{
       <nav className="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <NavLink to="/dashboard" className="navbar-item">
-            <img src="https://bulma.io/images/bulma-logo.png" 
+            <img src="https://d3j0t7vrtr92dk.cloudfront.net/dansmultipro/1619877293_logo-dans.png" 
             width="112" 
             height="28"
             alt="logo"/>

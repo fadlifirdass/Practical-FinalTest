@@ -4,6 +4,8 @@ const session = require('express-session')
 const dotenv = require("dotenv")
 const db = require('./config/database')
 const SequelizeStore = require('connect-session-sequelize')
+const sendEmailHr = require('./smtp/HrCron')
+const cron = require('node-cron')
 const AbsensiRoutes = require('./routers/AbsensiRoute')
 const PengumumanRoutes = require('./routers/PengumumanRoutes')
 const UserRoutes = require('./routers/UserRoute')
@@ -41,6 +43,10 @@ app.use(AbsensiRoutes)
 app.use(AuthRoutes)
 
 
+cron.schedule('0 0 * * *', () => {
+    sendEmailHr()
+    console.log('Email terkirim');
+  });
 
 app.listen(process.env.APP_PORT,()=>{
     console.log('Server berjalan..')

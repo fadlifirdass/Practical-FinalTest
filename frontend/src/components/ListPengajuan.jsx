@@ -13,6 +13,8 @@ const ListPengajuan = () => {
             const response = await axios.get('http://localhost:5000/products')
             setProduct(response.data);
     }
+
+
   return (
     <div>
        <h1 className='title'>Request</h1>
@@ -37,7 +39,7 @@ const ListPengajuan = () => {
                 <td>{product.user.name}</td>
                 <td>{product.status}</td>
                 <td>
-                    <Link to={`/pengajuan/edit/${product.uuid}`} className='button is-halfwidth'>Approve</Link>
+                    <Link to={`/pengajuan/edit/${product.uuid}`} className='button is-small'>Approve</Link>
                 </td>
             </tr>
             ))} 
